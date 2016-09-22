@@ -44,9 +44,15 @@ public class BST implements BST_Interface {
 
 	@Override
 	public boolean remove(String s) {
+		// FAILURE CASES
 		// Check if root exists, if not return false
 		if (this.root == null)
 			return false;
+		// Check if the data exists in the tree as a whole
+		if (root.containsNode(s) == false)
+			return false;
+		
+		// IF IT DOES EXIST AND CAN BE RUN
 		// Check if the root is what needs to be removed
 		else if (this.root.getData().equals(s)) {
 			// Create temp root to use remove operations, like a head similar to for a LinkedList, 
@@ -93,8 +99,8 @@ public class BST implements BST_Interface {
 
 	@Override
 	public boolean empty() {
-		// Check if the height of the tree is zero
-		if (this.height() == 0)
+		// Check if the root is null or if the size is zero
+		if (this.size == 0 || this.root == null)
 			return true;
 		else
 			return false;
